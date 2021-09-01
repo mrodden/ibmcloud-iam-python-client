@@ -10,8 +10,11 @@ matrix:
     - python: 3.6
       env: TOXENV=py36
 
+before_install:
+  - python -m pip install --upgrade virtualenv
+
 install:
-  - "pip install tox"
+  - pip install tox
 
 script:
   - tox
