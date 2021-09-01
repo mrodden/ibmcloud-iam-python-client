@@ -28,7 +28,7 @@ Some things that will be added soon in the future:
 ```python
 import os
 
-from ibmcloud_api.token import TokenManager
+from ibmcloud_iam.token import TokenManager
 
 tm = TokenManager(api_key=os.environ["IBMCLOUD_API_KEY"])
 
@@ -48,12 +48,13 @@ print(tm.get_token())
 ```python
 import os
 
-from ibmcloud_api.token import TokenManager
+import ibmcloud_iam.token
+from ibmcloud_iam.token import TokenManager
 
 tm = TokenManager(api_key=os.environ["IBMCLOUD_API_KEY"])
 
 # validate_token will check the signature and parse and return the token claims
-claims = ibmcloud_api.validate_token(tm.get_token())
+claims = ibmcloud_iam.token.validate_token(tm.get_token())
 
 print(claims)
 ```
