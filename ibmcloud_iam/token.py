@@ -14,10 +14,10 @@
 
 import time
 import types
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 import jwt
-from redstone.auth import TokenManager
+from redstone.auth import TokenManager  # noqa: F401
 
 
 DEFAULT_IAM_KEY_URL = "https://iam.cloud.ibm.com/identity/keys"

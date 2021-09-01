@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ibmcloud_iam import token as tapi
-
 import requests
+
+from ibmcloud_iam import token as tapi
 
 """
 PDP stands for the Policy Determination Point and

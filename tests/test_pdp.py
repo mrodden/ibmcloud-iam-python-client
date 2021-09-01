@@ -15,11 +15,10 @@
 import base64
 import json
 import os
-import time
 import unittest
 
-from ibmcloud_iam import token
 from ibmcloud_iam import pdp
+from ibmcloud_iam import token
 
 
 class PDPTestCase(unittest.TestCase):
