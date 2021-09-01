@@ -1,5 +1,8 @@
 # ibmcloud-iam-python-client
 
+[![PyPi](https://img.shields.io/pypi/v/ibmcloud-iam.svg)](https://pypi.org/project/ibmcloud-iam)
+[![Downloads](https://static.pepy.tech/personalized-badge/ibmcloud-iam?period=total&units=international_system&left_color=grey&right_color=orange&left_text=Downloads)](https://pepy.tech/project/ibmcloud-iam)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://app.travis-ci.com/mrodden/ibmcloud-iam-python-client.svg?branch=master)](https://app.travis-ci.com/mrodden/ibmcloud-iam-python-client)
 
 This project is a collection of Python modules used for interacting with IBMCloud IAM API services.

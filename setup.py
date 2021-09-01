@@ -19,10 +19,11 @@ with open("README.md", "r", encoding="utf8") as fh:
 
 setup(
     name="ibmcloud-iam",
-    version="0.1.0",
+    version="0.1.1",
     author="Mathew Odden",
     author_email="mrodden@us.ibm.com",
     url="https://github.com/mrodden/ibmcloud-iam-python-client",
+    description="A collection of Python modules used for interacting with IBMCloud IAM API services",
     long_description=long_desc,
     long_description_content_type="text/markdown",
     packages=find_packages(),

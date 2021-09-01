@@ -11,5 +11,5 @@ dist:
 
 publish: dist
 	pip install 'twine>=1.5.0'
-	twine upload --repository ibmcloud_iam dist/*
+	twine upload --repository ibmcloud_iam --skip-existing dist/*
 	rm -fr build dist .egg *.egg-info
