@@ -14,12 +14,17 @@
 
 from setuptools import setup, find_packages
 
+with open("README.md", "r", encoding="utf8") as fh:
+    long_desc = fh.read()
+
 setup(
     name="ibmcloud-iam",
     version="0.1.0",
     author="Mathew Odden",
     author_email="mrodden@us.ibm.com",
     url="https://github.com/mrodden/ibmcloud-iam-python-client",
+    long_description=long_desc,
+    long_description_content_type="text/markdown",
     packages=find_packages(),
     install_requires=["requests[security]", "pyjwt", "redstone"],
     extras_require={
@@ -33,4 +38,5 @@ setup(
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: Apache Software License",
     ],
+    python_requires=">=3.6",
 )
