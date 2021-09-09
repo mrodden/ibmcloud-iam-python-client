@@ -83,10 +83,10 @@ class PDPClient(object):
         """
         resp = self._is_authorized(subject, action, resource)
         resp.raise_for_status()
-        return resp.json()
+        return resp.json()["responses"][0]["authorizationDecision"]
 
     def subject_as_attributes(self, token: str):
-        claims = tapi.validate_token(token, self._endpoint + "/identity/keys")
+        claims = tapi.validate_token(token, self._endpoint)
 
         if "iam_id" not in claims:
             raise ValueError("Token missing 'iam_id' claim.")
@@ -98,6 +98,6 @@ class PDPClient(object):
 
     def subject_as_token_body(self, token: str):
         # this method is simpler but doesn't match up with the responses that we are caching
-        _ = tapi.validate_token(token, self._endpoint + "/identity/keys")
+        _ = tapi.validate_token(token, self._endpoint)
         _, body, _ = token.split(".")
         return {"accessTokenBody": body}

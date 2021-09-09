@@ -20,13 +20,17 @@ import jwt
 from redstone.auth import TokenManager  # noqa: F401
 
 
-DEFAULT_IAM_KEY_URL = "https://iam.cloud.ibm.com/identity/keys"
+DEFAULT_IAM_ENDPOINT = "https://iam.cloud.ibm.com"
 EXPIRE_LEEWAY = 5  # seconds
 
 
-def validate_token(token: str, iam_key_url: Optional[str] = None) -> Dict:
-    if iam_key_url is None:
-        iam_key_url = DEFAULT_IAM_KEY_URL
+def validate_token(token: str, iam_endpoint: Optional[str] = None) -> Dict:
+    _key_path = "/identity/keys"
+
+    if iam_endpoint is None:
+        iam_endpoint = DEFAULT_IAM_ENDPOINT
+
+    iam_key_url = iam_endpoint + _key_path
 
     kc = jwt.PyJWKClient(iam_key_url)
 

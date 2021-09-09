@@ -16,7 +16,7 @@ import json
 import os
 
 from ibmcloud_iam import pdp as pdpapi
-from ibmcloud_iam.token import TokenManager
+import ibmcloud_iam.token
 
 
 def main():
@@ -26,8 +26,8 @@ def main():
     # this gets a user token for our example to be complete,
     # normally 'user_token' is sent by a client to your service
     # inside the client requests (HTTP Authorization Header)
-    tm = TokenManager(api_key, iam_endpoint=endpoint)
     api_key = os.environ.get("IBMCLOUD_API_KEY")
+    tm = ibmcloud_iam.token.TokenManager(api_key, iam_endpoint=endpoint)
     user_token = tm.get_token()
 
     # validate the user token, it also returns the validated claims
@@ -73,7 +73,7 @@ def main():
     # print the full body response from PDP
     # the "permitted" field on the response is a boolean indicating
     # if the request is authorized or not
-    print(json.dumps(resp), indent=4, sort_keys=True)
+    print(json.dumps(resp, indent=4, sort_keys=True))
 
 
 if __name__ == "__main__":
