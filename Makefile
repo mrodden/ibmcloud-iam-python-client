@@ -1,9 +1,15 @@
 .PHONY: test dist publish
 
+check: fmt mypy test
+
+fmt:
+	black -t py36 ibmcloud_iam
+
+mypy:
+	mypy --show-error-codes ibmcloud_iam
 
 test:
 	python -m unittest discover -v tests
-
 
 dist:
 	python setup.py sdist bdist_wheel

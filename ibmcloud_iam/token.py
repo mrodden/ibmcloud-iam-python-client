@@ -42,7 +42,7 @@ def validate_token(token: str, iam_endpoint: Optional[str] = None) -> Dict:
             key["use"] = "sig"
         return jwt.PyJWKSet.from_dict(data)
 
-    kc.get_jwk_set = types.MethodType(new_get_set, kc)
+    setattr(kc, "get_jwk_set", types.MethodType(new_get_set, kc))
 
     public_key = kc.get_signing_key_from_jwt(token)
 
