@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Dict
+
 import requests
 
 from ibmcloud_iam import token as tapi
@@ -50,7 +52,9 @@ class PDPClient(object):
 
         self._session.auth = bearer_auth
 
-    def _is_authorized(self, subject, action, resource):
+    def _is_authorized(
+        self, subject: Dict, action: str, resource: Dict
+    ) -> "requests.models.Response":
         req_data = {
             "subject": subject,
             "resource": resource,
@@ -74,7 +78,7 @@ class PDPClient(object):
 
         return resp
 
-    def is_authorized(self, subject, action, resource):
+    def is_authorized(self, subject: Dict, action: str, resource: Dict) -> Dict:
         """
         Retrieve a policy decision for a single Subject, Action, Resource tuple.
 
@@ -85,7 +89,7 @@ class PDPClient(object):
         resp.raise_for_status()
         return resp.json()["responses"][0]["authorizationDecision"]
 
-    def subject_as_attributes(self, token: str):
+    def subject_as_attributes(self, token: str) -> Dict:
         claims = tapi.validate_token(token, self._endpoint)
 
         if "iam_id" not in claims:
@@ -96,7 +100,7 @@ class PDPClient(object):
 
         return {"attributes": {"id": claims["iam_id"], "scope": claims["scope"]}}
 
-    def subject_as_token_body(self, token: str):
+    def subject_as_token_body(self, token: str) -> Dict:
         # this method is simpler but doesn't match up with the responses that we are caching
         _ = tapi.validate_token(token, self._endpoint)
         _, body, _ = token.split(".")

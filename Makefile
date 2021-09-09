@@ -3,10 +3,10 @@
 check: fmt mypy test
 
 fmt:
-	black -t py36 ibmcloud_iam
+	black -t py36 ibmcloud_iam tests example.py
 
 mypy:
-	mypy --show-error-codes ibmcloud_iam
+	mypy --show-error-codes ibmcloud_iam tests example.py
 
 test:
 	python -m unittest discover -v tests
