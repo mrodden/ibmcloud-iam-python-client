@@ -19,7 +19,7 @@ with open("README.md", "r", encoding="utf8") as fh:
 
 setup(
     name="ibmcloud-iam",
-    version="0.1.3",
+    version="0.1.4",
     author="Mathew Odden",
     author_email="mrodden@us.ibm.com",
     url="https://github.com/mrodden/ibmcloud-iam-python-client",
@@ -27,6 +27,9 @@ setup(
     long_description=long_desc,
     long_description_content_type="text/markdown",
     packages=find_packages(),
+    package_data={"ibmcloud_iam": ["py.typed", "*.pyi"]},
+    include_package_data=True,
+    zip_safe=False,
     install_requires=["requests[security]", "pyjwt", "redstone"],
     extras_require={
         "docs": ["sphinx>=3.1", "sphinx_rtd_theme"],
