@@ -30,7 +30,7 @@ setup(
     package_data={"ibmcloud_iam": ["py.typed", "*.pyi"]},
     include_package_data=True,
     zip_safe=False,
-    install_requires=["requests[security]", "pyjwt>=2.1.0", "redstone"],
+    install_requires=["requests[security]", "pyjwt>=2.1.0,<2.5", "redstone"],
     extras_require={
         "docs": ["sphinx>=3.1", "sphinx_rtd_theme"],
     },
